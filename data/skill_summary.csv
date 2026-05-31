@@ -1,0 +1,23 @@
+skill_summary = []
+
+for skill, count in skill_counts.items():
+
+    skill_summary.append({
+        "skill": skill,
+        "count": count,
+        "percentage":
+            (count / total_jobs) * 100
+    })
+
+summary_df = pd.DataFrame(skill_summary)
+
+summary_df.sort_values(
+    by="count",
+    ascending=False,
+    inplace=True
+)
+
+summary_df.to_csv(
+    "data/skill_summary.csv",
+    index=False
+)
